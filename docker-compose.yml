@@ -1,0 +1,37 @@
+version: '3.3'
+
+
+services:
+  postgres:
+    image: postgres:latest
+    network_mode: bridge
+    container_name: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    env_file:
+      - database.env 
+    restart: unless-stopped
+  springbootapp:
+    image: springio/gs-spring-boot-docker
+    network_mode: bridge
+    container_name: project_biller_api
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    links:
+      - postgres
+# Names our volume
+volumes:
+  postgres-data:
+networks:
+  default:
+    external:
+      name: pbiller_nw
