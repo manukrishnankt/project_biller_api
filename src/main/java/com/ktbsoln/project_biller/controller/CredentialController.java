@@ -15,7 +15,7 @@ public class CredentialController {
 	@Autowired private LoginCredentialService loginCredentialService;
 	
 	@PostMapping("/checkCredntial")
-	public ResponseEntity<LoginCredentialDto> checkLoginCredntial (LoginCredentialDto loginCredential){
+	public ResponseEntity<LoginCredentialDto> checkLoginCredntial (String loginCredential){
 		return ResponseEntity.ok(loginCredentialService.checkCredential(loginCredential));
 	}
 }
