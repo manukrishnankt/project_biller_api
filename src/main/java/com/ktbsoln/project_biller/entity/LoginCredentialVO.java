@@ -33,7 +33,7 @@ public class LoginCredentialVO {
 	@Column(name = "ic_created_date")
 	private Timestamp loginCredentialCreatedDate;
 
-	@Column(name = "ic_record_status")
+	@Column(name = "lc_record_status")
 	private String loginCredentialRecordStatus;
 
 	public Long getLoginCredentialId() {

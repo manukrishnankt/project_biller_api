@@ -5,12 +5,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.ktbsoln.project_biller.entity.LoginCredentialVO;
+import com.ktbsoln.project_biller.utils.PBillerConstants;
 
 @Repository
 public interface LoginCredentialRepository  extends JpaRepository<LoginCredentialVO, Long>{
 	@Query(value="SELECT lc FROM login_credential lc INNER JOIN company"+
 				" AS c ON lc.lc_id = c.company_login_credential_id WHERE lc.lc_username=?1"+
-				" AND lc.lc_password=?2 AND c.company_name=?3")
+				" AND lc.lc_password=?2 AND c.company_name=?3",nativeQuery = true)
 	LoginCredentialVO checkLoginCredential(String userName, String password, String companyName);
 
+	@Query(value="SELECT lc FROM LoginCredentialVO lc WHERE lc.loginCredentialUserName=?1 AND"+
+				" lc.loginCredentialRecordStatus='"+PBillerConstants.RECORD_STATUS_ACTIVE+"'")
+	LoginCredentialVO getByUserName(String userName);
 }

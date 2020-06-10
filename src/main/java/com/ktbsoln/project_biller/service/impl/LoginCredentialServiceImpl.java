@@ -30,5 +30,4 @@ public class LoginCredentialServiceImpl implements LoginCredentialService{
 		}
 		return lvo;
 	}
-	
 }

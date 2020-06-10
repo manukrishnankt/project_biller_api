@@ -1,6 +1,11 @@
 package com.ktbsoln.project_biller.dto;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+
+import com.ktbsoln.project_biller.utils.PBillerConstants;
 
 public class LoginCredentialDto {
 	
@@ -12,6 +17,19 @@ public class LoginCredentialDto {
 	private Timestamp loginCredentialCreatedDate;
 	private String loginCredentialRecordStatus;
 	private String loginCredentialComapnyName;
+	private boolean enabledYN;
+	private List<GrantedAuthority> grantedAuthorities;
+	
+	public LoginCredentialDto() {}
+	
+	public LoginCredentialDto(Long loginCredentialId, String loginCredentialUserName, 
+			String loginCredentialPassword, String loginCredentialRecordStatus, List<GrantedAuthority> grantedAuthorities) {
+		this.enabledYN =  PBillerConstants.RECORD_STATUS_ACTIVE.equals(loginCredentialRecordStatus);
+		this.loginCredentialId = loginCredentialId;
+		this.loginCredentialUserName = loginCredentialUserName;
+		this.loginCredentialPassword = loginCredentialPassword;
+		
+	}
 	
 	public Long getLoginCredentialId() {
 		return loginCredentialId;
@@ -60,5 +78,17 @@ public class LoginCredentialDto {
 	}
 	public void setLoginCredentialComapnyName(String loginCredentialComapnyName) {
 		this.loginCredentialComapnyName = loginCredentialComapnyName;
+	}
+	public boolean isEnabledYN() {
+		return enabledYN;
+	}
+	public void setEnabledYN(boolean enabledYN) {
+		this.enabledYN = enabledYN;
+	}
+	public List<GrantedAuthority> getGrantedAuthorities() {
+		return grantedAuthorities;
+	}
+	public void setGrantedAuthorities(List<GrantedAuthority> grantedAuthorities) {
+		this.grantedAuthorities = grantedAuthorities;
 	}
 }
