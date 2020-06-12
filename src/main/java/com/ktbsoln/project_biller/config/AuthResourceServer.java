@@ -25,7 +25,7 @@ public class AuthResourceServer extends ResourceServerConfigurerAdapter{
                 anonymous().disable()
                 .authorizeRequests()
         		.antMatchers("/guest/**").permitAll()
-        		.antMatchers("/user/**").access("hasRole('ADMIN')")
+        		.antMatchers("/test/**").access("hasRole('ADMIN')")
         		.antMatchers("/oauth/**").permitAll()
         		.antMatchers("/admin/**").access("hasRole('ADMIN')")
         		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

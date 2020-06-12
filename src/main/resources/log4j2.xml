@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" monitorInterval="30">
-    <Properties>
-        <Property name="LOG_PATTERN">
-            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
-        </Property>
-    </Properties>
+<Configuration>
     <Appenders>
-        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
         </Console>
-        <RollingFile name="FileAppender" fileName="logs/log4j2-demo.log" 
-             filePattern="logs/log4j2-demo-%d{yyyy-MM-dd}-%i.log">
-		    <PatternLayout>
-		        <Pattern>${LOG_PATTERN}</Pattern>
-		    </PatternLayout>
-		    <Policies>
-		        <SizeBasedTriggeringPolicy size="10MB" />
-		    </Policies>
-		    <DefaultRolloverStrategy max="10"/>
-		</RollingFile>
+ 
+        <RollingFile name="RollingFile"
+            fileName="./logs/spring-boot-logger-log4j2.log"
+            filePattern="./logs/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <!-- rollover on startup, daily and when the file reaches 
+                    10 MegaBytes -->
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy
+                    size="10 MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
     </Appenders>
+ 
     <Loggers>
-        <Logger name="com.ktbsoln.project_biller" level="debug" additivity="false">
-            <AppenderRef ref="ConsoleAppender" />
-        </Logger>
-
+        <!-- LOG everything at INFO level -->
         <Root level="info">
-            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
         </Root>
+ 
+        <!-- LOG "com.baeldung*" at TRACE level -->
+        <Logger name="com.ktbsoln.project_biller" level="trace"></Logger>
     </Loggers>
+ 
 </Configuration>

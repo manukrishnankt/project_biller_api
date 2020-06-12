@@ -28,6 +28,7 @@ public class LoginCredentialDto {
 		this.loginCredentialId = loginCredentialId;
 		this.loginCredentialUserName = loginCredentialUserName;
 		this.loginCredentialPassword = loginCredentialPassword;
+		this.grantedAuthorities = grantedAuthorities;
 		
 	}
 	
