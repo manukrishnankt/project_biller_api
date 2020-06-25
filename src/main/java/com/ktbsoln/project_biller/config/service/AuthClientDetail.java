@@ -43,7 +43,7 @@ public class AuthClientDetail implements ClientDetails {
 		this.grantedAuth = grantedAuth;
 		this.accessTokenValidity = accessTokenValidity;
 		this.refreshTokenValidity = refreshTokenValidity;
-		this.isAutoApproveYN = isAutoApproveYN;
+		this.isAutoApproveYN = true;
 	}
 	
 	@Override

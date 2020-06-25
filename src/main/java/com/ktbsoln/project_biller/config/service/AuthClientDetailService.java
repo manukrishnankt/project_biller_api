@@ -33,7 +33,7 @@ public class AuthClientDetailService implements ClientDetailsService{
 			boolean isSecretYN = true;
 			String clientSecret = oauthClient.getClientSecret();
 			boolean scopeYN = true;
-			Set<String> scopes = Arrays.asList(oauthClient.getScope().split(",")).stream().collect(Collectors.toSet());
+			Set<String> scopes = Arrays.asList(oauthClient.getScope().split(",")).stream().map(item -> item.trim()).collect(Collectors.toSet());
 			Set<String> authGrantTypes = Arrays.asList(oauthClient.getAuthorizedGrantTypes().split(",")).stream().collect(Collectors.toSet());
 			Set<String> redirectUris = Arrays.asList(oauthClient.getRedirectUri().split(",")).stream().collect(Collectors.toSet());
 

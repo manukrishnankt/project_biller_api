@@ -1,6 +1,7 @@
 package com.ktbsoln.project_biller.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -21,14 +22,16 @@ public class AuthResourceServer extends ResourceServerConfigurerAdapter{
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-        http.
-                anonymous().disable()
-                .authorizeRequests()
-        		.antMatchers("/guest/**").permitAll()
+        http
+        		.cors().and()
+        		.authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers("/oauth/token").permitAll()
+        		.antMatchers("/guest/**","/oauth/**").permitAll()
         		.antMatchers("/test/**").access("hasRole('ADMIN')")
-        		.antMatchers("/oauth/**").permitAll()
         		.antMatchers("/admin/**").access("hasRole('ADMIN')")
         		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}
+	
 }
