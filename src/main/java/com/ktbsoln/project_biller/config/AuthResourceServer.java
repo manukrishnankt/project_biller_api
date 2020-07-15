@@ -26,10 +26,8 @@ public class AuthResourceServer extends ResourceServerConfigurerAdapter{
         		.cors().and()
         		.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers("/oauth/token").permitAll()
-        		.antMatchers("/guest/**","/oauth/**").permitAll()
-        		.antMatchers("/test/**").access("hasRole('ADMIN')")
-        		.antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/oauth/**").permitAll()
+        		.antMatchers("/coreapi/**").permitAll()
         		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}

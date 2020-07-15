@@ -69,6 +69,6 @@ public class AuthAuthorizationServer extends AuthorizationServerConfigurerAdapte
       throws Exception {
         oauthServer
           .tokenKeyAccess("permitAll()")
-          .checkTokenAccess("isAuthenticated()");
+          .checkTokenAccess("permitAll()");
     }
 }

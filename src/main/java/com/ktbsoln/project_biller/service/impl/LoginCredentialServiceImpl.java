@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.ktbsoln.project_biller.dto.LoginCredentialDto;
+import com.ktbsoln.project_biller.entity.CompanyVO;
 import com.ktbsoln.project_biller.entity.LoginCredentialVO;
 import com.ktbsoln.project_biller.repository.LoginCredentialRepository;
 import com.ktbsoln.project_biller.service.LoginCredentialService;
@@ -29,5 +30,16 @@ public class LoginCredentialServiceImpl implements LoginCredentialService{
 			lvo.setLoginCredentialId(loginCredential.getLoginCredentialId());
 		}
 		return lvo;
+	}
+
+	@Override
+	public LoginCredentialDto getUserAndComapnyDetails(String loginCredentialComapnyName, String userName) {
+		CompanyVO companyVO = loginCredentialRepo.getComapnyDetails(loginCredentialComapnyName, userName);
+		LoginCredentialDto loginCredentialDto = new LoginCredentialDto();
+		loginCredentialDto.setLoginCredentialComapnyName(companyVO.getCompanyName());
+		loginCredentialDto.setLoginCredentialCompanyId(companyVO.getCompanyId());
+		loginCredentialDto.setLoginCredentialUserName(userName);
+		loginCredentialDto.setLoginCredentialId(loginCredentialRepo.getUserId(loginCredentialComapnyName, userName));
+		return loginCredentialDto;
 	}
 }

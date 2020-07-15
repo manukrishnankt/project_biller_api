@@ -17,7 +17,7 @@ public class ProductCatagoryVO {
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name="pro_catagory_id")
     private Long proCatagoryId;
-     
+    
     @Column(name="pro_catagory_name")
     private String proCatagoryName;
 
@@ -30,6 +30,9 @@ public class ProductCatagoryVO {
     @Column(name="pro_catagory_description")
     private String proCatagoryDescription;
 
+    @Column(name="pro_catagory_companyId")
+    private String proCatagoryCompanyId;
+    
 	public Long getProCatagoryId() {
 		return proCatagoryId;
 	}
@@ -69,5 +72,14 @@ public class ProductCatagoryVO {
 	public void setProCatagoryDescription(String proCatagoryDescription) {
 		this.proCatagoryDescription = proCatagoryDescription;
 	}
+
+	public String getProCatagoryCompanyId() {
+		return proCatagoryCompanyId;
+	}
+
+	public void setProCatagoryCompanyId(String proCatagoryCompanyId) {
+		this.proCatagoryCompanyId = proCatagoryCompanyId;
+	}
     
+	
 }
