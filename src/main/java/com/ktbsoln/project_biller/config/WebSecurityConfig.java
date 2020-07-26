@@ -1,5 +1,8 @@
 package com.ktbsoln.project_biller.config;
 
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +77,15 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 	    web.ignoring().antMatchers(HttpMethod.OPTIONS, "/oauth/token");
+	}
+	
+	@Bean
+	public KeyPair keyPairBean() throws NoSuchAlgorithmException {
+	  KeyPairGenerator gen = KeyPairGenerator.getInstance("RSA");
+	  gen.initialize(2048);
+	  KeyPair keyPair = gen.generateKeyPair();
+	  System.out.println(keyPair.getPrivate());
+	  System.out.println(keyPair.getPublic());
+	  return keyPair;
 	}
 }

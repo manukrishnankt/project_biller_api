@@ -1,7 +1,9 @@
 package com.ktbsoln.project_biller.controller;
 
+import java.security.Principal;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,4 +19,10 @@ public class InvoiceController {
 	public Object greeting() {
 		return counter.incrementAndGet();
 	}
+
+	@GetMapping("/me")
+    public ResponseEntity<Principal> get(final Principal principal) {
+        return ResponseEntity.ok(principal);
+    }
+
 }

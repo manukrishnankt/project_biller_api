@@ -28,6 +28,7 @@ public class AuthResourceServer extends ResourceServerConfigurerAdapter{
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/oauth/**").permitAll()
         		.antMatchers("/coreapi/**").permitAll()
+        		.antMatchers("/test/**").access("hasRole('ADMIN')")
         		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}

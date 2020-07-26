@@ -1,9 +1,12 @@
 package com.ktbsoln.project_biller.config;
 
+import java.security.KeyPair;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -18,9 +21,6 @@ import com.ktbsoln.project_biller.config.service.AuthClientDetailService;
 @Configuration
 @EnableAuthorizationServer
 public class AuthAuthorizationServer extends AuthorizationServerConfigurerAdapter {
-
-	@Autowired
-	private AuthenticationManager authenticationManager;
 	
 	@Autowired
 	private AuthClientDetailService authClientDetailService;
@@ -37,11 +37,21 @@ public class AuthAuthorizationServer extends AuthorizationServerConfigurerAdapte
 	static final int ACCESS_TOKEN_VALIDITY_SECONDS = 1*60*60;
 	static final int FREFRESH_TOKEN_VALIDITY_SECONDS = 6*60*60;
 	
+	
+	AuthenticationManager authenticationManager;
+	KeyPair keyPair;
+
+	public AuthAuthorizationServer(AuthenticationConfiguration authenticationConfiguration,
+			KeyPair keyPair) throws Exception {
+
+		this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
+		this.keyPair = keyPair;
+	}
 
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		converter.setSigningKey("as466gf");
+		converter.setKeyPair(this.keyPair);
 		return converter;
 	}
 
