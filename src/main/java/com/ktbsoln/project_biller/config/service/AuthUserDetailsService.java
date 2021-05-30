@@ -47,5 +47,4 @@ public class AuthUserDetailsService implements UserDetailsService {
 		}
 		return authUserDetail;
 	}
-
 }

@@ -34,7 +34,7 @@ public class CompanyVO {
 	private String companyRecordStatus;
 	
 	@Column(name = "company_login_credential_id")
-	private String companyLoginCredentialId;
+	private Long companyLoginCredentialId;
 
 	public Long getCompanyId() {
 		return companyId;
@@ -84,11 +84,11 @@ public class CompanyVO {
 		this.companyRecordStatus = companyRecordStatus;
 	}
 
-	public String getCompanyLoginCredentialId() {
+	public Long getCompanyLoginCredentialId() {
 		return companyLoginCredentialId;
 	}
 
-	public void setCompanyLoginCredentialId(String companyLoginCredentialId) {
+	public void setCompanyLoginCredentialId(Long companyLoginCredentialId) {
 		this.companyLoginCredentialId = companyLoginCredentialId;
 	}
 	

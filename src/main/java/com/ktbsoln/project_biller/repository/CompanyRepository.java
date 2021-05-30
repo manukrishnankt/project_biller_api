@@ -9,12 +9,12 @@ import com.ktbsoln.project_biller.entity.CompanyVO;
 @Repository
 public interface CompanyRepository  extends JpaRepository<CompanyVO, Long>{
 	@Query(value="SELECT company.* FROM login_credential  INNER JOIN company"+
-			" ON login_credential.lc_id = company.company_login_credential_id WHERE login_credential.lc_username=?2"+
+			" ON login_credential.lc_company_id = company.company_id WHERE login_credential.lc_username=?2"+
 			" AND company.company_name=?1",nativeQuery = true)
 	CompanyVO getComapnyDetails(String loginCredentialComapnyName, String userName);
 	
 	@Query(value="SELECT lc.lc_id FROM login_credential lc INNER JOIN company"+
-			" AS c ON lc.lc_id = c.company_login_credential_id WHERE lc.lc_username=?2"+
+			" AS c ON lc.lc_company_id = c.company_id WHERE lc.lc_username=?2"+
 			" AND c.company_name=?1",nativeQuery = true)
 	Long getUserId(String loginCredentialComapnyName, String userName);
 }
