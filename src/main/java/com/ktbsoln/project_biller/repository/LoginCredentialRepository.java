@@ -23,4 +23,6 @@ public interface LoginCredentialRepository  extends JpaRepository<LoginCredentia
 			" AS c ON lc.lc_company_id = c.company_id WHERE lc.lc_username=?2"+
 			" AND c.company_name=?1",nativeQuery = true)
 	Long getUserId(String loginCredentialComapnyName, String userName);
+
+	LoginCredentialVO findByLoginCredentialUserName(String loginCredentialUserName);
 }
