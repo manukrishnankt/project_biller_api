@@ -1,0 +1,1 @@
+ALTER TABLE product_catagory ALTER COLUMN pro_catagory_company_id TYPE bigint USING pro_catagory_company_id::bigint;
