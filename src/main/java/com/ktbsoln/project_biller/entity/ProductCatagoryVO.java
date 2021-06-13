@@ -31,7 +31,7 @@ public class ProductCatagoryVO {
     private String proCatagoryDescription;
 
     @Column(name="pro_catagory_companyId")
-    private String proCatagoryCompanyId;
+    private Long proCatagoryCompanyId;
     
 	public Long getProCatagoryId() {
 		return proCatagoryId;
@@ -73,11 +73,11 @@ public class ProductCatagoryVO {
 		this.proCatagoryDescription = proCatagoryDescription;
 	}
 
-	public String getProCatagoryCompanyId() {
+	public Long getProCatagoryCompanyId() {
 		return proCatagoryCompanyId;
 	}
 
-	public void setProCatagoryCompanyId(String proCatagoryCompanyId) {
+	public void setProCatagoryCompanyId(Long proCatagoryCompanyId) {
 		this.proCatagoryCompanyId = proCatagoryCompanyId;
 	}
     

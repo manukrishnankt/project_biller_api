@@ -19,10 +19,11 @@ import com.ktbsoln.project_biller.service.LoginCredentialService;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @RestController
-@RequestMapping(value= "/login")
+@RequestMapping(value= "/credential")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CredentialController {
-	@Autowired private LoginCredentialService loginCredentialService;
+	@Autowired
+	private LoginCredentialService loginCredentialService;
 	
 	@PostMapping("/checkCredntial")
 	public ResponseEntity<LoginCredentialDto> checkLoginCredntial (String loginCredential){
