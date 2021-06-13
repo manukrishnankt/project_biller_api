@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "41532b28-3f5b-4306-a85f-72b6750bdfa9",
+		"name": "Project Biller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic cGJpbGxlcjpwYmlsbGVy",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/oauth/token?grant_type=password&username=manu&password=manu&scope=Write",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "username",
+							"value": "manu"
+						},
+						{
+							"key": "password",
+							"value": "manu"
+						},
+						{
+							"key": "scope",
+							"value": "Write"
+						}
+					]
+				},
+				"description": "http://localhost:8080/oauth/token?grant_type=password&username=manu&password=manu&scope=Write"
+			},
+			"response": []
+		},
+		{
+			"name": "Save Product Catagory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VfaWQiXSwidXNlcl9uYW1lIjoibWFudSIsInNjb3BlIjpbIldyaXRlIl0sImV4cCI6MTYyMzU2NDU0NSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIyM2E3NjRkNy04NjY2LTQzMjgtODlmNS1jYzU4YTY2NmFkNmYiLCJjbGllbnRfaWQiOiJwYmlsbGVyIn0.kWjC1He5jYpMMhifdiM1_sv2Q7G2JJ4pmmuvIiaMYqWSB2mwSZ44T_V6NH5ylgEmJ1oimwFU7uUj5idWuEugzP-GKdIiJQi5wm8dG5kOFXWCaRiXUhBziN1vXDvhwP4yLbPGSKzYKs-xOZSG9YcNOV5wh77h1cauptGRYTbXWx30M7kZJfCJcJcyvdSEzChPR40yHJcxLBVljFQSPFb5YlDDelEnUC1JZY8ubdM5tZLV5xx5vVd0bt84qtqeg87saohCZaq6bj-Ugkfagc5yTndmdk3rArggPlyOTm17T8cA2SrCTkLiGQE9eZ-rqUieGTSSkiF05fAu_GWtSNJxzw",
+						"type": "text"
+					},
+					{
+						"key": "x-pbiller-orgid",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"INSERT\",\r\n    \"proCatagoryDescription\": \"Sample\",\r\n    \"proCatagoryName\": \"Sandals\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/coreapi/product/catagory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coreapi",
+						"product",
+						"catagory"
+					]
+				},
+				"description": "http://localhost:8080/coreapi/product/catagory"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Product Catagory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VfaWQiXSwidXNlcl9uYW1lIjoibWFudSIsInNjb3BlIjpbIldyaXRlIl0sImV4cCI6MTYyMzU2OTM0MywiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJjNzQ0YjBlYy1iMDQ3LTQ1NGQtYjUxMC00OGMxMTZlNGY0MGEiLCJjbGllbnRfaWQiOiJwYmlsbGVyIn0.k1mSCTrq7He7N8cjuiyHcGY0pFyblN3wlL2fo9BhwECPdnQOmHFeypR-qzWoym5ZTIhgd4R-dpXn4QqP9EbB5R2W3sHTgoyF_5kCWaZUP5hnUJWShuI4O6IkPs9_rHIMURIMgl3BLV8DF7Y7SEM9NzabMnG0YAFxMOeMpQ9Q6D1VefGkGM_RMLDWs2_m__J_WVJ_F2OUiF2FC6zzq7_a70duEQ2M3FOUUrPqx9HrvHu4kDP2MkT-0eKX_BM2kxR6Cc9fLDLFexY-10NjLzxI7dhYlziLAfYgTO9hD99VEDUKtKaHbDr_0nSFYv7HVhoPCE0pFImF1rfpTPDPix3Adg",
+						"type": "text"
+					},
+					{
+						"key": "x-pbiller-orgid",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/coreapi/product/catagory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coreapi",
+						"product",
+						"catagory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VfaWQiXSwidXNlcl9uYW1lIjoibWFudSIsInNjb3BlIjpbIldyaXRlIl0sImV4cCI6MTYyMzYwNDgzOCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiI1MzA1OTljMi1iNTVkLTQ5YzAtYTA0Zi0wYmE0MWY3MzM5YWQiLCJjbGllbnRfaWQiOiJwYmlsbGVyIn0.UgZgTzECmUEey5ibpWsJo00UIsTQd4-kprBDcF0O88WCY7ohwN7mgXRxfcIwckxUvlAA78yc53zkr2W2Eu2_pCaNUkFQaugIaq6IjKBU8_cR_DSlem2YJ4wTKSuC-itogUxx02GLp-ZjxpI_ctmAbpdGV2UI_vv70oavyKNmLv2YWkar2KqfDY8fhluFw13HK80ifwKYdd4N3buuzLbv20xkxmf05TuW7rj-Ad2tJ-OyDPG_tNgK8lYNx_fSKWfqjuYMhqeyrdqSaKyHjsypw7gePXXzL6mRnBympbOaY79Bt9D8ENzo8_Wpf4UJqlkh8aShxs8eet_UMH3Tj8dmWA",
+						"type": "text"
+					},
+					{
+						"key": "x-pbiller-orgid",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"loginCredentialUserName\": \"manu.k\",\r\n    \"loginCredentialPassword\": \"Global12$\",\r\n    \"loginCredentialPasswordHint\": \"GlobalOneTwoDollor\",\r\n    \"loginCredentialCompanyId\": 1,\r\n    \"loginCredentialCreatedDate\": \"\",\r\n    \"loginCredentialRecordStatus\": \"\",\r\n    \"authorityId\": 1\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/coreapi/user/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coreapi",
+						"user",
+						"user"
+					]
+				},
+				"description": "http://localhost:8080/coreapi/user/user"
+			},
+			"response": []
+		}
+	]
+}
