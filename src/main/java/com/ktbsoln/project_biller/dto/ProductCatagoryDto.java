@@ -10,6 +10,8 @@ public class ProductCatagoryDto {
     private String proCatagoryRecordStatus;
     private String proCatagoryDescription;
     private String action;
+    private Long proCatagoryCompanyCreatedUserId;
+    
 	public Long getProCatagoryId() {
 		return proCatagoryId;
 	}
@@ -46,5 +48,10 @@ public class ProductCatagoryDto {
 	public void setAction(String action) {
 		this.action = action;
 	}
-    
+	public Long getProCatagoryCompanyCreatedUserId() {
+		return proCatagoryCompanyCreatedUserId;
+	}
+	public void setProCatagoryCompanyCreatedUserId(Long proCatagoryCompanyCreatedUserId) {
+		this.proCatagoryCompanyCreatedUserId = proCatagoryCompanyCreatedUserId;
+	}
 }

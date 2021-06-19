@@ -25,4 +25,5 @@ public interface LoginCredentialRepository  extends JpaRepository<LoginCredentia
 	Long getUserId(String loginCredentialComapnyName, String userName);
 
 	LoginCredentialVO findByLoginCredentialUserName(String loginCredentialUserName);
+	LoginCredentialVO findByLoginCredentialId(Long loginCredentialId);
 }
