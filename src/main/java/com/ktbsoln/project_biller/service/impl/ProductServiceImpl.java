@@ -2,6 +2,7 @@ package com.ktbsoln.project_biller.service.impl;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,12 +30,12 @@ public class ProductServiceImpl implements ProductService{
 	public String saveOrUpdate(ProductCatagoryDto productCatagoryDto, Long orgid) {
 		String response ="";
 		if(productCatagoryDto != null) {
-			Gson g = new Gson();
-			String json = g.toJson(productCatagoryDto);
-			ProductCatagoryVO productCatagoryVO = new Gson().fromJson(json, ProductCatagoryVO.class);
-			LoginCredentialVO loginCredentialVO = loginCredentialRepository.findByLoginCredentialId(productCatagoryDto.getProCatagoryCompanyCreatedUserId());
-			productCatagoryVO.setProCatagoryCompanyCreatedUser(loginCredentialVO);
 			if(PBillerConstants.PBILLER_DB_OP_INSERT.equals(productCatagoryDto.getAction())) {
+				Gson g = new Gson();
+				String json = g.toJson(productCatagoryDto);
+				ProductCatagoryVO productCatagoryVO = new Gson().fromJson(json, ProductCatagoryVO.class);
+				LoginCredentialVO loginCredentialVO = loginCredentialRepository.findByLoginCredentialId(productCatagoryDto.getProCatagoryCompanyCreatedUserId());
+				productCatagoryVO.setProCatagoryCompanyCreatedUser(loginCredentialVO);
 				Set<ProductCatagoryVO> productList = listByProductNameandOrgId(productCatagoryVO.getProCatagoryName(), orgid);
 				if (productList.size() == 0) {
 					productCatagoryVO.setProCatagoryCompanyId(orgid);
@@ -45,8 +46,18 @@ public class ProductServiceImpl implements ProductService{
 				} else {
 					response = "{\"STATUS\":\"FAILED\",\"DESCRIPTION\":\"PRODUCT CATAGORY NAME ALREADY EXISTS\"}";
 				}
+			} else {
+				Optional<ProductCatagoryVO> proCatagoryVOption = productCatagoryRepository.findById(productCatagoryDto.getProCatagoryId());
+				if (proCatagoryVOption.isPresent()) {
+					ProductCatagoryVO proCatagoryVO = proCatagoryVOption.get();
+					proCatagoryVO.setProCatagoryName(productCatagoryDto.getProCatagoryName());
+					proCatagoryVO.setProCatagoryDescription(productCatagoryDto.getProCatagoryDescription());
+					productCatagoryRepository.save(proCatagoryVO);
+					response = "{\"STATUS\":\"OK\",\"DESCRIPTION\":\"PRODUCT CATAGORY UPDATED SUCCESSFULLY\"}";
+				} else {
+					response = "{\"STATUS\":\"FAILED\",\"DESCRIPTION\":\"PRODUCT CATAGORY COULD NOT BE FOUND!\"}";
+				}
 			}
-			
 		}
 		return response;
 	}

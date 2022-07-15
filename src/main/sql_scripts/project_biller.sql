@@ -35,7 +35,6 @@ CREATE TABLE public.address (
 );
 
 
-ALTER TABLE public.address OWNER TO manu;
 
 --
 -- Name: authority; Type: TABLE; Schema: public; Owner: manu
@@ -47,7 +46,6 @@ CREATE TABLE public.authority (
 );
 
 
-ALTER TABLE public.authority OWNER TO manu;
 
 --
 -- Name: client_granted_authority; Type: TABLE; Schema: public; Owner: manu
@@ -61,7 +59,6 @@ CREATE TABLE public.client_granted_authority (
 );
 
 
-ALTER TABLE public.client_granted_authority OWNER TO manu;
 
 --
 -- Name: company; Type: TABLE; Schema: public; Owner: manu
@@ -78,7 +75,6 @@ CREATE TABLE public.company (
 );
 
 
-ALTER TABLE public.company OWNER TO manu;
 
 --
 -- Name: countries; Type: TABLE; Schema: public; Owner: manu
@@ -92,7 +88,6 @@ CREATE TABLE public.countries (
 );
 
 
-ALTER TABLE public.countries OWNER TO manu;
 
 --
 -- Name: country_states; Type: TABLE; Schema: public; Owner: manu
@@ -105,7 +100,6 @@ CREATE TABLE public.country_states (
 );
 
 
-ALTER TABLE public.country_states OWNER TO manu;
 
 --
 -- Name: customer; Type: TABLE; Schema: public; Owner: manu
@@ -121,8 +115,6 @@ CREATE TABLE public.customer (
     customer_record_status character varying(255)
 );
 
-
-ALTER TABLE public.customer OWNER TO manu;
 
 --
 -- Name: employee; Type: TABLE; Schema: public; Owner: manu
@@ -147,7 +139,6 @@ CREATE TABLE public.employee (
 );
 
 
-ALTER TABLE public.employee OWNER TO manu;
 
 --
 -- Name: granted_authority; Type: TABLE; Schema: public; Owner: manu
@@ -160,7 +151,6 @@ CREATE TABLE public.granted_authority (
 );
 
 
-ALTER TABLE public.granted_authority OWNER TO manu;
 
 --
 -- Name: hibernate_sequence; Type: SEQUENCE; Schema: public; Owner: manu
@@ -174,7 +164,6 @@ CREATE SEQUENCE public.hibernate_sequence
     CACHE 1;
 
 
-ALTER TABLE public.hibernate_sequence OWNER TO manu;
 
 --
 -- Name: identity; Type: TABLE; Schema: public; Owner: manu
@@ -189,8 +178,6 @@ CREATE TABLE public.identity (
     identity_type character varying(255)
 );
 
-
-ALTER TABLE public.identity OWNER TO manu;
 
 --
 -- Name: invoice; Type: TABLE; Schema: public; Owner: manu
@@ -212,7 +199,6 @@ CREATE TABLE public.invoice (
 );
 
 
-ALTER TABLE public.invoice OWNER TO manu;
 
 --
 -- Name: invoice_details; Type: TABLE; Schema: public; Owner: manu
@@ -228,7 +214,6 @@ CREATE TABLE public.invoice_details (
 );
 
 
-ALTER TABLE public.invoice_details OWNER TO manu;
 
 --
 -- Name: login_credential; Type: TABLE; Schema: public; Owner: manu
@@ -247,7 +232,6 @@ CREATE TABLE public.login_credential (
 );
 
 
-ALTER TABLE public.login_credential OWNER TO manu;
 
 --
 -- Name: oauth_client_details; Type: TABLE; Schema: public; Owner: manu
@@ -269,7 +253,6 @@ CREATE TABLE public.oauth_client_details (
 );
 
 
-ALTER TABLE public.oauth_client_details OWNER TO manu;
 
 --
 -- Name: product; Type: TABLE; Schema: public; Owner: manu
@@ -287,7 +270,6 @@ CREATE TABLE public.product (
 );
 
 
-ALTER TABLE public.product OWNER TO manu;
 
 --
 -- Name: product_catagory; Type: TABLE; Schema: public; Owner: manu
@@ -303,7 +285,6 @@ CREATE TABLE public.product_catagory (
 );
 
 
-ALTER TABLE public.product_catagory OWNER TO manu;
 
 --
 -- Name: product_quantity; Type: TABLE; Schema: public; Owner: manu
@@ -320,7 +301,6 @@ CREATE TABLE public.product_quantity (
 );
 
 
-ALTER TABLE public.product_quantity OWNER TO manu;
 
 --
 -- Name: state_city; Type: TABLE; Schema: public; Owner: manu
@@ -333,7 +313,6 @@ CREATE TABLE public.state_city (
 );
 
 
-ALTER TABLE public.state_city OWNER TO manu;
 
 --
 -- Name: user_granted_authority; Type: TABLE; Schema: public; Owner: manu
@@ -347,7 +326,6 @@ CREATE TABLE public.user_granted_authority (
 );
 
 
-ALTER TABLE public.user_granted_authority OWNER TO manu;
 
 --
 -- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: manu
