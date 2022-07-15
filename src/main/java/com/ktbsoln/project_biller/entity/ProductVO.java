@@ -2,11 +2,14 @@ package com.ktbsoln.project_biller.entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,8 +27,10 @@ public class ProductVO {
 	@Column(name = "product_price")
 	private Long productPrice;
 
-	@Column(name = "product_catagory_id")
-	private Long productCatagoryId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_catagory_id", referencedColumnName = "pro_catagory_id")
+	private ProductCatagoryVO productCatagory;
 	
 	@Column(name = "product_company_id")
 	private Long productCompanyId;
@@ -63,20 +68,20 @@ public class ProductVO {
 		this.productPrice = productPrice;
 	}
 
-	public Long getProductCatagoryId() {
-		return productCatagoryId;
-	}
-
-	public void setProductCatagoryId(Long productCatagoryId) {
-		this.productCatagoryId = productCatagoryId;
-	}
-
 	public Long getProductCompanyId() {
 		return productCompanyId;
 	}
 
 	public void setProductCompanyId(Long productCompanyId) {
 		this.productCompanyId = productCompanyId;
+	}
+
+	public ProductCatagoryVO getProductCatagory() {
+		return productCatagory;
+	}
+
+	public void setProductCatagory(ProductCatagoryVO productCatagory) {
+		this.productCatagory = productCatagory;
 	}
 
 	public String getProductLastUpdated() {

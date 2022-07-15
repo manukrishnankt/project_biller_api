@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ktbsoln.project_biller.dto.ProductCatagoryDto;
+import com.ktbsoln.project_biller.dto.ProductDto2;
 import com.ktbsoln.project_biller.entity.ProductCatagoryVO;
 import com.ktbsoln.project_biller.service.ProductService;
 
@@ -31,5 +32,9 @@ public class ProductController {
 	@GetMapping("/catagory")
 	public ResponseEntity<List<ProductCatagoryVO>> getAllProductCatagoryByOrgId(@RequestHeader("x-pbiller-orgid") Long orgId) {
 		return  ResponseEntity.ok(productService.getAllProductCatagoryByOrgId(orgId));
+	}
+	@GetMapping("/product")
+	public ResponseEntity<List<ProductDto2>> getAllProducts(@RequestHeader("x-pbiller-orgid") Long orgId) {
+		return  ResponseEntity.ok(productService.getAllProducts(orgId));
 	}
 }
