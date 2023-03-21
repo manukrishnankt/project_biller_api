@@ -19,7 +19,4 @@ public class GuestController {
 	public ResponseEntity<String> postCheck (){
 		return ResponseEntity.ok("{\"hello\":\"hello\"}");
 	}
-	@GetMapping("/tablejoin")
-	public ResponseEntity<String> joinCheck(){
-	}
 }
