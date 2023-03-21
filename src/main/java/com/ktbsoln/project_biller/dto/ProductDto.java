@@ -5,9 +5,10 @@ import java.sql.Timestamp;
 public class ProductDto {
 	private String productName;
 	private Long productPrice;
-	private String productCatagory;
+	private Long productCatagoryId;
 	private Timestamp productCreatedDate;
-
+	private Long productCreatedBy;
+	private String productDescription;
 
 	public String getProductName() {
 		return productName;
@@ -24,15 +25,7 @@ public class ProductDto {
 	public void setProductPrice(Long productPrice) {
 		this.productPrice = productPrice;
 	}
-
-	public String getProductCatagory() {
-		return productCatagory;
-	}
-
-	public void setProductCatagory(String productCatagory) {
-		this.productCatagory = productCatagory;
-	}
-
+	
 	public Timestamp getProductCreatedDate() {
 		return productCreatedDate;
 	}
@@ -41,5 +34,28 @@ public class ProductDto {
 		this.productCreatedDate = productCreatedDate;
 	}
 
+	public Long getProductCreatedBy() {
+		return productCreatedBy;
+	}
+
+	public void setProductCreatedBy(Long productCreatedBy) {
+		this.productCreatedBy = productCreatedBy;
+	}
+
+	public Long getProductCatagoryId() {
+		return productCatagoryId;
+	}
+
+	public void setProductCatagoryId(Long productCatagoryId) {
+		this.productCatagoryId = productCatagoryId;
+	}
+
+	public String getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
 
 }

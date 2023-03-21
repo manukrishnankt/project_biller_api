@@ -1,6 +1,7 @@
 package com.ktbsoln.project_biller.controller;
 
 import java.security.Principal;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -24,6 +25,7 @@ import javassist.tools.rmi.ObjectNotFoundException;
 public class CredentialController {
 	@Autowired
 	private LoginCredentialService loginCredentialService;
+	private final AtomicLong counter = new AtomicLong();
 	
 	@PostMapping("/checkCredntial")
 	public ResponseEntity<LoginCredentialDto> checkLoginCredntial (String loginCredential){
@@ -43,4 +45,9 @@ public class CredentialController {
     public ResponseEntity<Principal> get(final Principal principal) {
         return ResponseEntity.ok(principal);
     }
+	
+	@GetMapping("/greeting")
+	public Object greeting() {
+		return counter.incrementAndGet();
+	}
 }

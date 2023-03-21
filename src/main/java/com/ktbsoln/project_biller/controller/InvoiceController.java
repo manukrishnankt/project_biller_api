@@ -20,7 +20,7 @@ public class InvoiceController {
 		return counter.incrementAndGet();
 	}
 
-	@GetMapping("/me")
+    @GetMapping("/{id}")
     public ResponseEntity<Principal> get(final Principal principal) {
         return ResponseEntity.ok(principal);
     }

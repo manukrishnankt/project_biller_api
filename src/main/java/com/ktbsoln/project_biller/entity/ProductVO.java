@@ -36,7 +36,7 @@ public class ProductVO {
 	private Long productCompanyId;
 
 	@Column(name = "product_lastupdated")
-	private String productLastUpdated;
+	private Timestamp productLastUpdated;
 	
 	@Column(name = "product_created")
 	private Timestamp productCreatedDate;
@@ -44,6 +44,13 @@ public class ProductVO {
 	@Column(name = "product_record_status")
 	private String productRecordStatus;
 
+	@Column(name = "product_description")
+	private String productDescription;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_createdby", referencedColumnName = "lc_id")
+    private LoginCredentialVO productCreatedBy;
+    
 	public Long getProductId() {
 		return productId;
 	}
@@ -84,11 +91,11 @@ public class ProductVO {
 		this.productCatagory = productCatagory;
 	}
 
-	public String getProductLastUpdated() {
+	public Timestamp getProductLastUpdated() {
 		return productLastUpdated;
 	}
 
-	public void setProductLastUpdated(String productLastUpdated) {
+	public void setProductLastUpdated(Timestamp productLastUpdated) {
 		this.productLastUpdated = productLastUpdated;
 	}
 
@@ -106,6 +113,22 @@ public class ProductVO {
 
 	public void setProductRecordStatus(String productRecordStatus) {
 		this.productRecordStatus = productRecordStatus;
+	}
+	
+	public LoginCredentialVO getProductCreatedBy() {
+		return productCreatedBy;
+	}
+
+	public void setProductCreatedBy(LoginCredentialVO productCreatedBy) {
+		this.productCreatedBy = productCreatedBy;
+	}
+
+	public String getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
 	}
 	
 }

@@ -37,7 +37,7 @@ public class ProductCatagoryVO {
     private Long proCatagoryCompanyId;
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pro_catagory_createdBy", referencedColumnName = "lc_id")
+    @JoinColumn(name = "pro_catagory_created_by", referencedColumnName = "lc_id")
     private LoginCredentialVO proCatagoryCompanyCreatedUser;
     
 	public Long getProCatagoryId() {
